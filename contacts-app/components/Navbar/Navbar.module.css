@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+.brand > a {
+  font-size: large;
+  font-weight: bold;
+  color: var(--text-light-black);
+}
+
+.interactive > a {
+  font-size: large;
+}
+
+.item {
+  display: block;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+}

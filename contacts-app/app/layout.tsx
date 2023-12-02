@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import styles from "./layout.module.css";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Contacts App",
@@ -13,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        <div className={styles.container}>{children}</div>
+      </body>
     </html>
   );
 }

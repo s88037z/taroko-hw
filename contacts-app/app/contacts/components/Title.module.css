@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+}
+.title {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > h2 {
+    display: block;
+    font-size: xx-large;
+  }
+}
+
+.prefixItem,
+.suffixItem {
+  min-width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.suffixItem > span {
+  padding: 0.5rem;
+  display: block;
+  border-radius: 50%;
+}

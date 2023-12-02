@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  > .profile {
+    display: flex;
+  }
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
