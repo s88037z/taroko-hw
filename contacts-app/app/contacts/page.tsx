@@ -1,18 +1,14 @@
-import ContactCard from "@/components/ContactCard";
+import ContactList from "@/app/contacts/components/ContactList";
 import Title from "./components/Title";
 import styles from "./page.module.css";
 
-crypto;
 const mockArr = new Array(6).fill(crypto.randomUUID());
-export default function ContactList() {
+
+export default async function Contacts() {
   return (
-    <div>
+    <section>
       <Title />
-      <div className={styles.container}>
-        {mockArr.map((key) => (
-          <ContactCard key={key} />
-        ))}
-      </div>
-    </div>
+      <ContactList />
+    </section>
   );
 }

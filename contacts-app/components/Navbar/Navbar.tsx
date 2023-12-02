@@ -1,15 +1,22 @@
+import Link from "next/link";
 import clsx from "clsx";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   return (
-    <div className={styles.container}>
-      <div className={styles.brand}>
-        <a className={styles.item}>Contact List</a>
-      </div>
+    <header className={styles.container}>
+      <nav className={styles.brand}>
+        <Link href={"/"} className={clsx(styles.item, "touchable")}>
+          Contact List
+        </Link>
+      </nav>
       <div className={styles.interactive}>
-        <a className={clsx(styles.item, "touchable")}>Add Contact</a>
+        <button
+          className={clsx(styles.item, "touchable", "button", "navbar-item")}
+        >
+          Add Contact
+        </button>
       </div>
-    </div>
+    </header>
   );
 }
