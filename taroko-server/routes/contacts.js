@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { getContacts, writeContacts } = require('../db/helpers');
+const { getContacts, writeContacts } = require("../db/helpers");
 
-const basePath = '/contacts';
+const basePath = "/contacts";
 
 /* GET contacts list */
 /**
@@ -38,7 +38,7 @@ const basePath = '/contacts';
 router.get(basePath, (req, res) => {
   return res.status(200).json({
     statusCode: 200,
-    message: 'Successfully retrieved the contacts list',
+    message: "Successfully retrieved the contacts list",
     data: getContacts(),
   });
 });
@@ -92,16 +92,22 @@ router.get(basePath, (req, res) => {
  *             example:
  *               statusCode: 404,
  *               message: 'Contact not found'
- *               data: {}          
+ *               data: {}
  */
 router.get(`${basePath}/:id`, (req, res) => {
   const { id } = req.params;
   const contact = getContacts().find((contact) => contact.id == id);
   if (!contact) {
-    return res.status(404).json({ statusCode: 404, message: 'Contact not found', data: {}});
+    return res
+      .status(404)
+      .json({ statusCode: 404, message: "Contact not found", data: {} });
   }
 
-  return res.status(200).json({ statusCode: 200, message: 'Contact successfully retrieved', data: contact });
+  return res.status(200).json({
+    statusCode: 200,
+    message: "Contact successfully retrieved",
+    data: contact,
+  });
 });
 
 /* POST create contact */
@@ -127,7 +133,7 @@ router.get(`${basePath}/:id`, (req, res) => {
  *               job:
  *                 type: string
  *               description:
- *                 type: string              
+ *                 type: string
  *           example: { contact: { first_name: 'Anakin', last_name: 'Skywalker', job: 'Jedi Knight', description: 'The Chosen one' } }
  *     responses:
  *       '201':
@@ -163,8 +169,11 @@ router.post(basePath, (req, res) => {
 
   writeContacts(contacts);
 
-  return res.status(201).json({ statusCode: 201, message: 'Contact successfully added', data: newContact });
-
+  return res.status(201).json({
+    statusCode: 201,
+    message: "Contact successfully added",
+    data: newContact,
+  });
 });
 
 /* PATCH update contact */
@@ -196,7 +205,7 @@ router.post(basePath, (req, res) => {
  *               job:
  *                 type: string
  *               description:
- *                 type: string              
+ *                 type: string
  *           example: { info: { first_name: 'Anakin' } }
  *     responses:
  *       '201':
@@ -216,7 +225,7 @@ router.post(basePath, (req, res) => {
  *               statusCode: 201,
  *               message: 'Contact correctly updated'
  *               data: { id: 1, first_name: 'Anakin', last_name: 'Skywalker', job: 'Jedi Knight', description: 'The Chose one' }
-*       '404':
+ *       '404':
  *         description: Contact not found
  *         content:
  *           application/json:
@@ -232,7 +241,7 @@ router.post(basePath, (req, res) => {
  *             example:
  *               statusCode: 404,
  *               message: 'Contact not found'
- *               data: {}   
+ *               data: {}
  */
 router.patch(`${basePath}/:id`, (req, res) => {
   const { id } = req.params;
@@ -244,14 +253,25 @@ router.patch(`${basePath}/:id`, (req, res) => {
   const elem = contacts.find((contact) => contact.id == id);
 
   if (!elem) {
-    return res.status(404).json({ statusCode: 404, message: 'Contact not found', data: {} });
+    return res
+      .status(404)
+      .json({ statusCode: 404, message: "Contact not found", data: {} });
   }
 
   const updatedContact = { ...elem, ...info };
+  console.log("info", info, "updatedContact", updatedContact);
 
-  writeContacts(contacts.map((contact) => contact.id === updatedContact.id ? updatedContact : contact))
+  writeContacts(
+    contacts.map((contact) =>
+      contact.id === updatedContact.id ? updatedContact : contact
+    )
+  );
 
-  return res.status(201).json({ statusCode: 201, message: 'Contact correctly updated', data: updatedContact });
+  return res.status(201).json({
+    statusCode: 201,
+    message: "Contact correctly updated",
+    data: updatedContact,
+  });
 });
 
 /* DELETE delete contact */
@@ -303,7 +323,7 @@ router.patch(`${basePath}/:id`, (req, res) => {
  *             example:
  *               statusCode: 404,
  *               message: 'Contact not found'
- *               data: {}          
+ *               data: {}
  */
 router.delete(`${basePath}/:id`, (req, res) => {
   const { id } = req.params;
@@ -314,14 +334,20 @@ router.delete(`${basePath}/:id`, (req, res) => {
   const elem = contacts.find((contact) => contact.id == id);
 
   if (!elem) {
-    return res.status(404).json({ statusCode: 404, message: 'Contact not found', data: {} });
+    return res
+      .status(404)
+      .json({ statusCode: 404, message: "Contact not found", data: {} });
   }
 
   const newContacts = contacts.filter((contact) => contact.id != id);
-  
-  writeContacts( newContacts);
 
-  return res.status(200).json({ statusCode: 200, message: 'Contact correctly deleted', data: elem });
+  writeContacts(newContacts);
+
+  return res.status(200).json({
+    statusCode: 200,
+    message: "Contact correctly deleted",
+    data: elem,
+  });
 });
 
 module.exports = router;

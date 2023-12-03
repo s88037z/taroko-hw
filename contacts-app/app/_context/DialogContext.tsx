@@ -14,17 +14,17 @@ type DialogConfig = {
 
 type DialogContextType = {
   setDialogOpen: Dispatch<SetStateAction<boolean>>;
-  setDialogConfig: Dispatch<SetStateAction<DialogConfig>>;
+  setDialog: Dispatch<SetStateAction<DialogConfig>>;
 };
 
 const DialogContext = createContext<DialogContextType | {}>({});
 
 export const DialogProvider = ({ children }: React.PropsWithChildren) => {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [dialogConfig, setDialogConfig] = useState<DialogConfig>({});
-  const { content, ...resConfig } = dialogConfig;
+  const [dialog, setDialog] = useState<DialogConfig>({});
+  const { content, ...resConfig } = dialog;
   return (
-    <DialogContext.Provider value={{ setDialogConfig, setDialogOpen }}>
+    <DialogContext.Provider value={{ setDialog, setDialogOpen }}>
       {children}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen} {...resConfig}>
         {content}
@@ -33,9 +33,9 @@ export const DialogProvider = ({ children }: React.PropsWithChildren) => {
   );
 };
 export const useDialog = () => {
-  const { setDialogConfig, setDialogOpen } = useContext(
+  const { setDialog, setDialogOpen } = useContext(
     DialogContext
   ) as DialogContextType;
 
-  return { setDialogConfig, setDialogOpen };
+  return { setDialog, setDialogOpen };
 };

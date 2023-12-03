@@ -11,6 +11,8 @@ export type CustomDialogProp = {
   description?: JSX.Element | string;
   confirmButton?: JSX.Element;
   confirmText?: string;
+  withDefaultButton?: boolean;
+  crossIconScale?: number;
 } & React.PropsWithChildren;
 
 export default function CustomDialog({
@@ -21,6 +23,8 @@ export default function CustomDialog({
   children,
   confirmText,
   confirmButton,
+  withDefaultButton = true,
+  crossIconScale,
 }: CustomDialogProp) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -32,14 +36,16 @@ export default function CustomDialog({
             <Dialog.Description>{description}</Dialog.Description>
           )}
           {children}
-          <div className={styles.confirmButton}>
-            <Dialog.Close asChild>
-              {confirmButton ?? <button>{confirmText}</button>}
-            </Dialog.Close>
-          </div>
+          {withDefaultButton && (
+            <div className={styles.confirmButton}>
+              <Dialog.Close asChild>
+                {confirmButton ?? <button>{confirmText}</button>}
+              </Dialog.Close>
+            </div>
+          )}
           <Dialog.Close asChild>
             <button className={styles.iconClose} aria-label="Close">
-              <Cross2Icon />
+              <Cross2Icon style={{ scale: crossIconScale }} />
             </button>
           </Dialog.Close>
         </Dialog.Content>

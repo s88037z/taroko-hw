@@ -12,32 +12,32 @@ type NotificationConfig = Omit<NotificationProps, "open" | "onOpenChange">;
 
 type NotificationContextType = {
   setNotificationOpen: Dispatch<SetStateAction<boolean>>;
-  setNotificationConfig: Dispatch<SetStateAction<NotificationConfig>>;
+  setNotification: Dispatch<SetStateAction<NotificationConfig>>;
 };
 
 const NotificationContext = createContext<NotificationContextType | {}>({});
 
 export const NotificationProvider = ({ children }: React.PropsWithChildren) => {
-  const [NotificationOpen, setNotificationOpen] = useState(false);
-  const [NotificationConfig, setNotificationConfig] =
-    useState<NotificationConfig>({});
+  const [notificationOpen, setNotificationOpen] = useState(false);
+  const [notification, setNotification] = useState<NotificationConfig>({});
+
   return (
     <NotificationContext.Provider
-      value={{ setNotificationConfig, setNotificationOpen }}
+      value={{ setNotification, setNotificationOpen }}
     >
       {children}
       <Notification
-        open={NotificationOpen}
+        open={notificationOpen}
         onOpenChange={setNotificationOpen}
-        {...NotificationConfig}
+        {...notification}
       />
     </NotificationContext.Provider>
   );
 };
 export const useNotification = () => {
-  const { setNotificationConfig, setNotificationOpen } = useContext(
+  const { setNotification, setNotificationOpen } = useContext(
     NotificationContext
   ) as NotificationContextType;
 
-  return { setNotificationConfig, setNotificationOpen };
+  return { setNotification, setNotificationOpen };
 };

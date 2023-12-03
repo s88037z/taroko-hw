@@ -5,6 +5,28 @@
   --anchor-blue: #485fc7;
   --light-grey: #fafafa;
   --text-light-black: #4a4a4a;
+
+  /* Colors */
+  --slate-7: #cdced6;
+  --slate-8: #b9bbc6;
+  --slate-9: #8b8d98;
+  --slate-11: #60646c;
+  --slate-12: #1c2024;
+
+  --red-2: #fff7f7;
+  --red-5: #ffcdce;
+  --red-7: #f4a9aa;
+  --red-9: #e5484d;
+  --red-10: #dc3e42;
+  --red-11: #ce2c31;
+
+  ----green-7: #8eceaa;
+  ----green-8: #65ba74;
+  ----green-9: #46a758;
+  ----green-11: #2a7e3b;
+
+  --lime-7: #abc978;
+  --lime-8: #8db654;
 }
 
 body,

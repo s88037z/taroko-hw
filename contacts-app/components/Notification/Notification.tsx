@@ -71,13 +71,11 @@ export default function Notification({
           </Toast.Action>
         )}
         <Toast.Close asChild>
-          {confirmButton ?? (
-            <button
-              className={clsx(styles.confirm, styles.button, styles.green)}
-            >
-              OK
-            </button>
-          )}
+          <div className={styles.confirm}>
+            {confirmButton ?? (
+              <button className={clsx(styles.button, styles.green)}>OK</button>
+            )}
+          </div>
         </Toast.Close>
       </Toast.Root>
 

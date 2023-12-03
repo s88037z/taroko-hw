@@ -1,18 +1,18 @@
-import ContactList from "@/app/contacts/components/ContactList";
-import { DialogProvider } from "../context/DialogContext";
-import { NotificationProvider } from "../context/NotificationContext";
-import Title from "./components/Title";
-import styles from "./page.module.css";
+import ContactList from "@/app/contacts/_components/ContactList";
+import Title from "./_components/Title";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default async function Contacts() {
+  const randomId = crypto.randomUUID();
+
   return (
     <section>
       <Title />
-      <DialogProvider>
-        <NotificationProvider>
-          <ContactList />
-        </NotificationProvider>
-      </DialogProvider>
+      {/*It's a workaround for now. ref:https://github.com/vercel/next.js/discussions/50563*/}
+      <Suspense key={randomId} fallback={<Loading />}>
+        <ContactList />
+      </Suspense>
     </section>
   );
 }
