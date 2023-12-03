@@ -7,6 +7,7 @@ import styles from "./Navbar.module.css";
 import ContactForm, {
   FormType,
 } from "@/app/contacts/_components/ContactForm/ContactForm";
+import Boop from "../Boop";
 
 export default function Navbar() {
   const { setDialog, setDialogOpen } = useDialog();
@@ -20,11 +21,14 @@ export default function Navbar() {
   };
   return (
     <header className={styles.container}>
-      <nav className={styles.brand}>
-        <Link href={"/"} className={clsx(styles.item, "touchable")}>
-          Contact List
-        </Link>
-      </nav>
+      <Boop rotation={10}>
+        <nav className={styles.brand}>
+          <Link href={"/"} className={clsx(styles.item, "touchable")}>
+            Contact List
+          </Link>
+        </nav>
+      </Boop>
+
       <div className={styles.interactive}>
         <button
           className={clsx(styles.item, "touchable", "button", "navbar-item")}

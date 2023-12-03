@@ -1,23 +1,49 @@
-import styles from "./Title.module.css";
+"use client";
+import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDownAZ } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDownAZ,
+  faArrowDownZA,
+} from "@fortawesome/free-solid-svg-icons";
+import Boop from "@/components/Boop";
+import { SortOrder } from "../ContactList";
+import styles from "./Title.module.css";
 
-export default function Title() {
+type PropType = {
+  order: SortOrder;
+};
+
+export default function Title({ order }: PropType) {
+  const router = useRouter();
+  const handleSortClick = () => {
+    router.push(
+      `/contacts?sort=${
+        order == SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC
+      }`
+    );
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.prefixItem}></div>
       <div className={styles.title}>
         <h2>Contacts</h2>
       </div>
+
       <div className={styles.suffixItem}>
-        <span className="touchable">
-          <SortIcon />
-        </span>
+        <Boop rotation={45} timing={100}>
+          <span className="touchable" onClick={handleSortClick}>
+            {order == SortOrder.ASC ? <SortIconAZ /> : <SortIconZA />}
+          </span>
+        </Boop>
       </div>
     </div>
   );
 }
 
-const SortIcon = () => {
+const SortIconAZ = () => {
   return <FontAwesomeIcon icon={faArrowDownAZ} size="xl" />;
+};
+const SortIconZA = () => {
+  return <FontAwesomeIcon icon={faArrowDownZA} size="xl" />;
 };

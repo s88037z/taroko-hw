@@ -20,7 +20,7 @@
   align-items: center;
 }
 .suffixItem > span {
-  padding: 0.5rem;
+  padding: 1rem;
   display: block;
   border-radius: 50%;
 }
