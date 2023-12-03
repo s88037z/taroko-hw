@@ -1,42 +1,51 @@
 "use client";
-
 import Link from "next/link";
 import clsx from "clsx";
+import { useMediaQuery } from "react-responsive";
 import { useDialog } from "@/app/_context/DialogContext";
-import styles from "./Navbar.module.css";
 import ContactForm, {
   FormType,
 } from "@/app/contacts/_components/ContactForm/ContactForm";
 import Boop from "../Boop";
+import Dropdown from "./Dropdown";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
+  const isMobileSize = useMediaQuery({ query: "(max-width: 768px)" });
   const { setDialog, setDialogOpen } = useDialog();
   const handlerAddContactClick = () => {
     setDialog({
       content: <ContactForm type={FormType.CREATE} />,
       withDefaultButton: false,
-      crossIconScale: 1.5,
     });
     setDialogOpen(true);
   };
+
   return (
     <header className={styles.container}>
+      {isMobileSize && (
+        <div className={styles.prefixItem}>
+          <Dropdown />
+        </div>
+      )}
       <Boop rotation={10}>
         <nav className={styles.brand}>
-          <Link href={"/"} className={clsx(styles.item, "touchable")}>
-            Contact List
-          </Link>
+          <Link href={"/"}>Contact List</Link>
         </nav>
       </Boop>
 
-      <div className={styles.interactive}>
-        <button
-          className={clsx(styles.item, "touchable", "button", "navbar-item")}
-          onClick={handlerAddContactClick}
-        >
-          Add Contact
-        </button>
-      </div>
+      {isMobileSize ? (
+        <div className={styles.suffixItem} />
+      ) : (
+        <div className={styles.addContact}>
+          <button
+            className={clsx("touchable", "button")}
+            onClick={handlerAddContactClick}
+          >
+            Add Contact
+          </button>
+        </div>
+      )}
     </header>
   );
 }

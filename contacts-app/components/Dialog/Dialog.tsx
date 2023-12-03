@@ -12,7 +12,6 @@ export type CustomDialogProp = {
   confirmButton?: JSX.Element;
   confirmText?: string;
   withDefaultButton?: boolean;
-  crossIconScale?: number;
 } & React.PropsWithChildren;
 
 export default function CustomDialog({
@@ -24,7 +23,6 @@ export default function CustomDialog({
   confirmText,
   confirmButton,
   withDefaultButton = true,
-  crossIconScale,
 }: CustomDialogProp) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -45,7 +43,7 @@ export default function CustomDialog({
           )}
           <Dialog.Close asChild>
             <button className={styles.iconClose} aria-label="Close">
-              <Cross2Icon style={{ scale: crossIconScale }} />
+              <Cross2Icon />
             </button>
           </Dialog.Close>
         </Dialog.Content>

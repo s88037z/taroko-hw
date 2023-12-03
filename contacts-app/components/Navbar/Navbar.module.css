@@ -8,16 +8,20 @@
   font-size: large;
   font-weight: bold;
   color: var(--text-light-black);
-}
-
-.interactive > a {
-  font-size: large;
-}
-
-.item {
-  display: block;
-  line-height: 1.5;
-  padding: 0.5rem 0.75rem;
-  border-radius: 10px;
   text-decoration: none;
+}
+
+.addContact > a {
+  font-size: large;
+  & > button {
+    display: block;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+}
+.prefixItem,
+.suffixItem {
+  min-width: 5rem;
 }

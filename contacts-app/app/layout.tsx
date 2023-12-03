@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import("@/components/Navbar"), { ssr: false });
 import { DialogProvider } from "@/app/_context/DialogContext";
 import { NotificationProvider } from "@/app/_context/NotificationContext";
 import "./globals.css";
