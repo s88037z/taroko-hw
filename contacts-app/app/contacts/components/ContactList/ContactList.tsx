@@ -3,7 +3,6 @@ import styles from "./ContactList.module.css";
 
 export default async function ContactList() {
   const { data }: { data: Contact[] } = await getContacts();
-  console.log("data", data);
 
   return (
     <div className={styles.layout}>

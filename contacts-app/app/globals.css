@@ -47,6 +47,17 @@ button {
   font-size: 1rem;
 }
 
+.button-danger {
+  background-color: #f14668;
+  border-color: transparent;
+  color: #fff;
+  &:hover {
+    background-color: #df2c50;
+    border-color: transparent;
+    color: #fff;
+  }
+}
+
 .touchable {
   color: var(--text-light-black);
   cursor: pointer;

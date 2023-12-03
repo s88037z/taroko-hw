@@ -1,7 +1,11 @@
-import styles from "./Contact.module.css";
+"use client";
+import { useEffect } from "react";
+import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import clsx from "clsx";
+import { useDialog } from "@/app/context/DialogContext";
+import { useNotification } from "@/app/context/NotificationContext";
+import styles from "./Contact.module.css";
 
 type ContactProp = {
   firstName: string;
@@ -16,6 +20,31 @@ export default function Contact({
   job,
   description,
 }: ContactProp) {
+  const { setDialogConfig, setDialogOpen } = useDialog();
+  const { setNotificationOpen, setNotificationConfig } = useNotification();
+
+  const handleEditClick = () => {
+    setDialogOpen(true);
+  };
+  const handleDeleteClick = () => {
+    setNotificationOpen(true);
+  };
+
+  useEffect(
+    function setupDialogAndNotification() {
+      setDialogConfig({
+        title: "Test Dialog",
+        description: "mock Dialog description",
+        confirmButton: <button className="button-danger">OK</button>,
+      });
+      setNotificationConfig({
+        title: "Test Notification",
+        description: "mock Notification description",
+      });
+    },
+    [setDialogConfig, setNotificationConfig]
+  );
+
   return (
     <section className={styles.container}>
       <div className={styles.infos}>
@@ -33,10 +62,13 @@ export default function Contact({
         </div>
       </div>
       <div className={styles.buttons}>
-        <button className={clsx(styles.button, styles.edit, "touchable")}>
+        <button
+          className={clsx(styles.button, styles.edit, "touchable")}
+          onClick={handleEditClick}
+        >
           Edit
         </button>
-        <button className={clsx(styles.button, styles.delete, "touchable")}>
+        <button className={clsx("button-danger")} onClick={handleDeleteClick}>
           Delete
         </button>
       </div>
