@@ -7,7 +7,7 @@
   - `cd ./taroko-server`
   - install deps with `npm install`
   - `npm run dev`
-  - it should run in port:3000 by default
+  - it should run on port:3000 by default
 - Run local contacts-app:
   - `cd ./contacts-app`
   - install deps with `npm install`
@@ -20,7 +20,7 @@
 
 ### The Framework
 
-- When taking this homework,first I need to thinking about which framework to use.the original CRA react or Nextjs.my thoughts as follows:
+- When taking this homework,first I need to think about which framework to use.the original CRA react or Nextjs.my thoughts as follows:
 
   - CRA React:
     - I'm way more familiar about it
