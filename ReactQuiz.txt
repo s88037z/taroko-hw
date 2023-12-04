@@ -1,0 +1,4 @@
+- Code1: handler on the parent node
+- Code2: handler on the each child
+When the the array is pretty long, it may be bad to the performance for adding so much listener.
+so the Code 1 solution may be better for that we can catch all the bubbling events from all children with only single listener. 

@@ -25,7 +25,6 @@ export default async function ContactList({
   });
 
   const sortedContacts = sortByFirstName(order, res?.data ?? []);
-
   return (
     <div className={styles.layout}>
       <div className={styles.container}>

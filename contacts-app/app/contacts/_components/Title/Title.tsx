@@ -33,7 +33,11 @@ export default function Title({ order }: PropType) {
       <div className={styles.suffixItem}>
         <Boop rotation={45} timing={100}>
           <span className="touchable" onClick={handleSortClick}>
-            {order == SortOrder.ASC ? <SortIconAZ /> : <SortIconZA />}
+            {order == SortOrder.ASC ? (
+              <SortIconAZ data-testid="asc-sort-icon" />
+            ) : (
+              <SortIconZA data-testid="desc-sort-icon" />
+            )}
           </span>
         </Boop>
       </div>

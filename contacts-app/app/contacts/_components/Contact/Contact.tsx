@@ -83,7 +83,7 @@ export default function Contact({
         <div className={styles.bio}>
           <ul>
             <li>{`Job:${job}`}</li>
-            <li>{`Description:${description}`}</li>
+            <li>{`Description: ${description}`}</li>
           </ul>
         </div>
       </div>
