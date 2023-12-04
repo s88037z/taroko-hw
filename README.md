@@ -46,7 +46,7 @@
 - CRA:
 
   - I used Material UI the most in the previous project. the pros is that it let you implement easy ui quickly.but it's hard to fully customize.Someone draw a illustration to explain it:
-    ![image](readme-assets/css-circles.png)
+    ![image](https://github.com/s88037z/taroko-hw/blob/main/readme-assests/css-circles.png)
 
     Our goal is to be in the intersection of three circle (with functionality,good styles,and CSS+:make use do work easily). however as engineer we should be able to fully control every circle (i.e. we can choose any solution in each pieces). but with lib like material UI, we are bond to the solutions it gave us.
     for this prj,I may try to use `tailwind` or pure css combined with `some headless ui`.
@@ -70,7 +70,7 @@
 ## About the achievements:
 
 - In this assignment I spent most time tackling with Nextjs.Since it's unfamiliar to me and the new Nextjs13 server component change lots of things. so there are few requirement is not fully completed.
-  - **About Testing**: There are some [issues](contacts-app/__test__/ContactsPage.test.tsx) when using `react-testing-library` and Next async server component. and I ran out of time , so I just completed [one unit test](contacts-app/__test__/Title.test.tsx).but I want to explain about how I would test if there are enough time:
+  - **About Testing**: There are some [issues](https://github.com/s88037z/taroko-hw/blob/main/contacts-app/__test__/ContactsPage.test.tsx#L61) when using `react-testing-library` and Next async server component. and I ran out of time , so I just completed [one unit test](contacts-app/__test__/Title.test.tsx).but I want to explain about how I would test if there are enough time:
     - First of all , "we can gain more confident the more likely we test like a real user". So the confident we got from top to low is : E2E > Integration > Unit test. however the maintain cost is also E2E > Integration > Unit test.
     - so when introduce testing to app, I may first write some E2E(ex.Cypress) tests to cover the most common paths user would using, also some other paths we afraid to broken(like the payment flow). then we can add some Integration test for some edge case or less priorities. and for some important pure logic we can use unit test to protect it.
   - Deployment: also because ran out of time
@@ -147,22 +147,22 @@
 
 - Technical Requirements
 
-  - [:white_check_mark:] The application must be written using React and TypeScript as the front-end.
-  - [:white_check_mark:] The application must be responsive for desktop and mobile.
-  - [:white_check_mark:] You must write your own CSS for this project.
-  - [:white_check_mark:] You may use any HTTP client for the data requests.
-  - [:white_check_mark:] The application should run correctly on the latest versions of Chrome, Firefox and Safari.
-  - [:heavy_exclamation_mark:] The application must be tested using React-related best practices (unit tests,snapshots...)
+  - [ :white_check_mark: ] The application must be written using React and TypeScript as the front-end.
+  - [ :white_check_mark: ] The application must be responsive for desktop and mobile.
+  - [ :white_check_mark: ] You must write your own CSS for this project.
+  - [ :white_check_mark: ] You may use any HTTP client for the data requests.
+  - [ :white_check_mark: ] The application should run correctly on the latest versions of Chrome, Firefox and Safari.
+  - [ :heavy_exclamation_mark: ] The application must be tested using React-related best practices (unit tests,snapshots...)
 
-    - half done, plz check [here](##about-the-achievements).
+    - half done, plz check [here](#about-the-achievements).
 
-  - [:white_check_mark:] A README file must be provided that explains how to run the application locally.
+  - [ :white_check_mark: ] A README file must be provided that explains how to run the application locally.
 
 - Extra Points:
-- [:white_check_mark:]Sass and CSS modules are used.
-- [:white_check_mark:]CSS basic animations to beautify the UI are used.
-- [:white_check_mark:]The application is written in Next.js.
-- [:white_check_mark:]ESLint is added to the repo.
-- [:white_check_mark:]Validation is provided when entering new contact data.
-- [:x:]The application is deployed for public access.
+- [ :white_check_mark: ]Sass and CSS modules are used.
+- [ :white_check_mark: ]CSS basic animations to beautify the UI are used.
+- [ :white_check_mark: ]The application is written in Next.js.
+- [ :white_check_mark: ]ESLint is added to the repo.
+- [ :white_check_mark: ]Validation is provided when entering new contact data.
+- [ :x: ]The application is deployed for public access.
   - sorry , ran out of time
