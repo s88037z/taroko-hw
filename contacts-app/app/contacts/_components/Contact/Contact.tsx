@@ -34,7 +34,6 @@ export default function Contact({
     setDialog({
       content: <ContactForm contactInfo={contactInfo} type={FormType.UPDATE} />,
       withDefaultButton: false,
-      crossIconScale: 1.5,
     });
     setDialogOpen(true);
   };
